@@ -3,8 +3,15 @@ import 'package:my_first_app/providers/asset_provider.dart';
 import 'package:provider/provider.dart'; // 引入 provider
 import 'package:my_first_app/pages/main_page.dart';
 import 'theme/theme_provider.dart'; // 引入刚才创建的类
+import 'services/notification_service.dart'; // 🟢 引入服务
 
-void main() {
+void main() async  {
+  // 🟢 确保 Flutter 绑定初始化
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 🟢 初始化通知服务
+  await NotificationService().init();
+
   runApp(
     // 🟢 使用 MultiProvider 包裹，方便以后添加更多状态
     MultiProvider(

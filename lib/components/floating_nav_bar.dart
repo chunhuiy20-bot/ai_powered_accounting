@@ -23,7 +23,7 @@ class FloatingNavBar extends StatelessWidget {
         margin: const EdgeInsets.only(left: 40, right: 40, bottom: 30),
         height: 64, // 悬浮岛的高度
         decoration: BoxDecoration(
-          color: Colors.white, // 纯白背景
+          color: Theme.of(context).colorScheme.surface, // 使用主题卡片背景色
           borderRadius: BorderRadius.circular(32), // 全圆角
           boxShadow: [
             BoxShadow(
@@ -51,7 +51,7 @@ class FloatingNavBar extends StatelessWidget {
                 padding: const EdgeInsets.all(4),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(28),
                   ),
                 ),
@@ -60,9 +60,9 @@ class FloatingNavBar extends StatelessWidget {
             // --- 前景层的图标和文字 ---
             Row(
               children: [
-                _buildNavItem(0, Icons.grid_view_rounded, "账单"),
-                _buildNavItem(1, Icons.add_rounded, "记账"),
-                _buildNavItem(2, Icons.person_rounded, "我的"),
+                _buildNavItem(context, 0, Icons.grid_view_rounded, "账单"),
+                _buildNavItem(context, 1, Icons.add_rounded, "记账"),
+                _buildNavItem(context, 2, Icons.person_rounded, "我的"),
               ],
             ),
           ],
@@ -72,7 +72,7 @@ class FloatingNavBar extends StatelessWidget {
   }
 
   // 5. _buildNavItem 现在只负责显示内容和处理点击，不再有自己的背景
-  Widget _buildNavItem(int index, IconData icon, String label) {
+  Widget _buildNavItem(BuildContext context, int index, IconData icon, String label) {
     final bool isSelected = selectedIndex == index;
 
     // 每个 Item 使用 Expanded 来占据 1/3 的空间
@@ -86,8 +86,10 @@ class FloatingNavBar extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                // 选中的图标在黑色背景上，所以是白色；未选中的是灰色
-                color: isSelected ? Colors.white : Colors.grey[600],
+                // 选中的图标使用主题的 onPrimary 颜色；未选中的使用 onSurface
+                color: isSelected
+                    ? Theme.of(context).colorScheme.onPrimary
+                    : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                 size: 24,
               ),
               // 使用 AnimatedSize 让文字出现/消失时有平滑的宽度动画
@@ -99,8 +101,8 @@ class FloatingNavBar extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8),
                   child: Text(
                     label,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
                     ),

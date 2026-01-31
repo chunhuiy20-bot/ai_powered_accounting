@@ -22,7 +22,7 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFFF2F2F7),
+      backgroundColor: Theme.of(context).colorScheme.background,
       elevation: 0,
       scrolledUnderElevation: 0,
       centerTitle: false,
@@ -37,7 +37,7 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
@@ -53,10 +53,10 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
               // 动态显示月份
               Text(
                 '${_selectedDate.month}月',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.onSurface,
                   height: 1.2,
                 ),
               ),
@@ -113,7 +113,7 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
   void _showMonthPicker(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(24),
@@ -205,9 +205,9 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
                           child: Container(
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              // 选中变黑，未选中透明
+                              // 选中使用主题色，未选中透明
                               color: isSelected
-                                  ? Colors.black
+                                  ? Theme.of(context).colorScheme.primary
                                   : Colors.transparent,
                               borderRadius: BorderRadius.circular(12),
                               // 未选中时加个淡边框
@@ -223,8 +223,8 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: isSelected
-                                    ? Colors.white
-                                    : Colors.black87,
+                                    ? Theme.of(context).colorScheme.onPrimary
+                                    : Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                           ),
@@ -249,7 +249,7 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
         width: 36,
         height: 36,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
@@ -259,7 +259,7 @@ class _DailyBillAppBarState extends State<DailyBillAppBar> {
             ),
           ],
         ),
-        child: Icon(icon, color: Colors.black87, size: 20),
+        child: Icon(icon, color: Theme.of(context).colorScheme.onSurface, size: 20),
       ),
     );
   }

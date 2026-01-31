@@ -20,7 +20,7 @@ class RecordAppBar extends StatelessWidget implements PreferredSizeWidget {
         bottom: 24,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.onSecondary,
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(32),
           bottomRight: Radius.circular(32),
@@ -53,12 +53,12 @@ class RecordAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  const Text(
+                  Text(
                     "记一笔",
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.w900,
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.onSurface,
                       letterSpacing: 1.0,
                     ),
                   ),
@@ -67,13 +67,13 @@ class RecordAppBar extends StatelessWidget implements PreferredSizeWidget {
               Container(
                 width: 44,
                 height: 44,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFF2F2F7),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.history_edu_rounded,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.onBackground,
                 ),
               ),
             ],
@@ -86,13 +86,13 @@ class RecordAppBar extends StatelessWidget implements PreferredSizeWidget {
             height: 48,
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: const Color(0xFFF2F2F7),
+              color: Theme.of(context).colorScheme.background,
               borderRadius: BorderRadius.circular(24),
             ),
             child: TabBar(
               controller: tabController,
               indicator: BoxDecoration(
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
@@ -102,7 +102,7 @@ class RecordAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ],
               ),
-              labelColor: Colors.white,
+              labelColor: Theme.of(context).colorScheme.onPrimary,
               unselectedLabelColor: Colors.grey,
               labelStyle: const TextStyle(
                 fontWeight: FontWeight.bold,

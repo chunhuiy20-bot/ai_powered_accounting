@@ -46,7 +46,7 @@ class _DailyBillPageState extends State<DailyBillPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F7),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           Padding(
@@ -104,7 +104,7 @@ class _DailyBillPageState extends State<DailyBillPage> {
             width: 280,
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
@@ -129,15 +129,15 @@ class _DailyBillPageState extends State<DailyBillPage> {
                     child: const Icon(Icons.delete_outline_rounded, color: Colors.red, size: 32),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
+                  Text(
                     "确认删除",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     "记录删除后将无法恢复，确定要继续吗？",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, color: Colors.grey[600], height: 1.4),
+                    style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), height: 1.4),
                   ),
                   const SizedBox(height: 24),
                   Row(
@@ -148,9 +148,9 @@ class _DailyBillPageState extends State<DailyBillPage> {
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            backgroundColor: const Color(0xFFF2F2F7),
+                            backgroundColor: Theme.of(context).colorScheme.background,
                           ),
-                          child: const Text("取消", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold)),
+                          child: Text("取消", style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontWeight: FontWeight.bold)),
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -165,9 +165,9 @@ class _DailyBillPageState extends State<DailyBillPage> {
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            backgroundColor: Colors.black,
+                            backgroundColor: Theme.of(context).colorScheme.primary,
                           ),
-                          child: const Text("删除", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                          child: Text("删除", style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold)),
                         ),
                       ),
                     ],
@@ -215,7 +215,7 @@ class _DailyBillPageState extends State<DailyBillPage> {
         children: [
           Text(
             date,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black54),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6)),
           ),
           Text(
             summary,
@@ -298,7 +298,7 @@ class _InteractiveBillItemState extends State<_InteractiveBillItem> with SingleT
           margin: const EdgeInsets.only(bottom: 12),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
@@ -327,7 +327,7 @@ class _InteractiveBillItemState extends State<_InteractiveBillItem> with SingleT
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: isIncome ? const Color(0xFFE02020) : Colors.black87,
+                  color: isIncome ? const Color(0xFFE02020) : Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ],
@@ -347,7 +347,7 @@ class _OverviewCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: const Color(0xFF333333),
+        color: Theme.of(context).colorScheme.secondary,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(

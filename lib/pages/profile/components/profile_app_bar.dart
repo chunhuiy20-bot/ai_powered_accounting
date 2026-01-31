@@ -25,9 +25,9 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
             right: 0,
             height: _whiteBackgroundHeight,
             child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
                 ),
@@ -95,12 +95,12 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         '点击登录',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                       const SizedBox(height: 6),
@@ -208,14 +208,16 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _buildIconButton(IconData icon) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.05),
-        shape: BoxShape.circle,
+    return Builder(
+      builder: (context) => Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.05),
+          shape: BoxShape.circle,
+        ),
+        child: Icon(icon, color: Theme.of(context).colorScheme.onSurface, size: 22),
       ),
-      child: Icon(icon, color: Colors.black87, size: 22),
     );
   }
 }

@@ -55,18 +55,18 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> with Si
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F7),
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
-        leading: const BackButton(color: Colors.black),
-        title: const Text("分类管理", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        leading: BackButton(color: Theme.of(context).colorScheme.onSurface),
+        title: Text("分类管理", style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold)),
         centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: Colors.black,
+          indicatorColor: Theme.of(context).colorScheme.primary,
           indicatorWeight: 3,
-          labelColor: Colors.black,
+          labelColor: Theme.of(context).colorScheme.primary,
           unselectedLabelColor: Colors.grey,
           labelStyle: const TextStyle(fontWeight: FontWeight.bold),
           tabs: const [Tab(text: "支出"), Tab(text: "收入")],
@@ -94,7 +94,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> with Si
         return Container(
           margin: const EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
           ),
           child: ListTile(
@@ -125,15 +125,15 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> with Si
       padding: EdgeInsets.only(
           left: 24, right: 24, bottom: MediaQuery.of(context).padding.bottom + 20, top: 10
       ),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
       ),
       child: ElevatedButton(
         onPressed: _showAddDialog,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
           minimumSize: const Size(double.infinity, 56),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
           elevation: 0,
@@ -181,9 +181,9 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> with Si
                   left: 24, right: 24, top: 24,
                   bottom: MediaQuery.of(ctx).viewInsets.bottom + 40
               ),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: const BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -196,7 +196,7 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> with Si
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF2F2F7),
+                      color: Theme.of(context).colorScheme.background,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
@@ -236,12 +236,12 @@ class _CategoryManagementPageState extends State<CategoryManagementPage> with Si
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: isPicked ? Colors.black : const Color(0xFFF2F2F7),
+                              color: isPicked ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.background,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Icon(
                               icon,
-                              color: isPicked ? Colors.white : Colors.black54,
+                              color: isPicked ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
                               size: 24,
                             ),
                           ),

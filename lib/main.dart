@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/providers/asset_provider.dart';
 import 'package:provider/provider.dart'; // 引入 provider
 import 'package:my_first_app/pages/main_page.dart';
 import 'theme/theme_provider.dart'; // 引入刚才创建的类
@@ -9,6 +10,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => AssetProvider()),
       ],
       child: const MyApp(),
     ),
